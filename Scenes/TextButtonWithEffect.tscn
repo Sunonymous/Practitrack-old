@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/MenuFXSessionBTNText.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+outline_size = 6
+outline_color = Color( 0.223529, 0.745098, 0.752941, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="ImageTexture" id=4]
+
+[node name="TextLabel" type="RichTextLabel"]
+margin_right = 150.0
+margin_bottom = 90.0
+rect_clip_content = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = " START
+Session"
+text = " START
+Session"
+scroll_active = false
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+TICK_LIMIT = 0.15
+MAX_OUTLINE = 8
+TIME_DELAY = 1.75
+
+[node name="ResetTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Button" type="TextureButton" parent="."]
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="mouse_entered" from="." to="." method="_on_SessionBTNText_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_SessionBTNText_mouse_exited"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_ResetTimer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_ControlParent_pressed"]

@@ -1,0 +1,209 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://Images/Icons/grey_sliderLeft.png" type="Texture" id=3]
+[ext_resource path="res://Images/Icons/grey_sliderRight.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Components/MenuFooterText.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Images/ClearBox.png" type="Texture" id=8]
+[ext_resource path="res://Images/WhiteBox.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/MenuGradient.gd" type="Script" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ScreenMargCont" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 480.0
+margin_bottom = 720.0
+theme = SubResource( 2 )
+custom_constants/margin_right = 20
+custom_constants/margin_top = 60
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 60
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuGroupsContainer" type="VBoxContainer" parent="ScreenMargCont"]
+margin_left = 20.0
+margin_top = 60.0
+margin_right = 460.0
+margin_bottom = 660.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SessionMargContainer" type="MarginContainer" parent="ScreenMargCont/MenuGroupsContainer"]
+margin_right = 440.0
+margin_bottom = 124.0
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+
+[node name="NewSessionButton" type="Button" parent="ScreenMargCont/MenuGroupsContainer/SessionMargContainer"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 400.0
+margin_bottom = 84.0
+text = "New Session"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActiveSetCont" type="HBoxContainer" parent="ScreenMargCont/MenuGroupsContainer"]
+margin_top = 128.0
+margin_right = 440.0
+margin_bottom = 245.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PrevSetButton" type="Button" parent="ScreenMargCont/MenuGroupsContainer/ActiveSetCont"]
+margin_right = 61.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+icon = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SetsOptionButton" type="OptionButton" parent="ScreenMargCont/MenuGroupsContainer/ActiveSetCont"]
+margin_left = 65.0
+margin_right = 374.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NextSetButton" type="Button" parent="ScreenMargCont/MenuGroupsContainer/ActiveSetCont"]
+margin_left = 378.0
+margin_right = 440.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+icon = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButtons" type="VBoxContainer" parent="ScreenMargCont/MenuGroupsContainer"]
+margin_top = 249.0
+margin_right = 440.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreateSetButton" type="Button" parent="ScreenMargCont/MenuGroupsContainer/MenuButtons"]
+margin_top = 33.0
+margin_right = 180.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_horizontal = 0
+text = "Create Set"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ModifySetButton" type="Button" parent="ScreenMargCont/MenuGroupsContainer/MenuButtons"]
+margin_top = 81.0
+margin_right = 179.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 179, 0 )
+size_flags_horizontal = 0
+text = "Modify Set"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewTimesButton" type="Button" parent="ScreenMargCont/MenuGroupsContainer/MenuButtons"]
+margin_top = 129.0
+margin_right = 180.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_horizontal = 0
+text = "View Times"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsButton" type="Button" parent="ScreenMargCont/MenuGroupsContainer/MenuButtons"]
+margin_top = 177.0
+margin_right = 180.0
+margin_bottom = 221.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_horizontal = 0
+text = "Settings"
+
+[node name="AboutButton" type="Button" parent="ScreenMargCont/MenuGroupsContainer/MenuButtons"]
+margin_top = 225.0
+margin_right = 180.0
+margin_bottom = 269.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_horizontal = 0
+disabled = true
+text = "About"
+
+[node name="ExitButton" type="Button" parent="ScreenMargCont/MenuGroupsContainer/MenuButtons"]
+margin_top = 273.0
+margin_right = 180.0
+margin_bottom = 317.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_horizontal = 0
+text = "Quit"
+
+[node name="ErrorPlacer" type="Node2D" parent="."]
+position = Vector2( 0, 675 )
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+visible = false
+margin_top = 341.0
+margin_right = 480.0
+margin_bottom = 386.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 9 )
+fill_mode = 2
+tint_under = Color( 1, 1, 1, 0 )
+tint_progress = Color( 0.313726, 0.572549, 0.603922, 1 )
+nine_patch_stretch = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResetTimer" type="Timer" parent="TextureProgress"]
+wait_time = 0.25
+
+[node name="FooterText" parent="." instance=ExtResource( 5 )]
+[connection signal="pressed" from="ScreenMargCont/MenuGroupsContainer/SessionMargContainer/NewSessionButton" to="." method="_on_NewSessionButton_pressed"]
+[connection signal="pressed" from="ScreenMargCont/MenuGroupsContainer/ActiveSetCont/PrevSetButton" to="." method="_on_PrevSetButton_pressed"]
+[connection signal="item_selected" from="ScreenMargCont/MenuGroupsContainer/ActiveSetCont/SetsOptionButton" to="." method="_on_SetsOptionButton_item_selected"]
+[connection signal="pressed" from="ScreenMargCont/MenuGroupsContainer/ActiveSetCont/NextSetButton" to="." method="_on_NextSetButton_pressed"]
+[connection signal="pressed" from="ScreenMargCont/MenuGroupsContainer/MenuButtons/CreateSetButton" to="." method="_on_CreateSetButton_pressed"]
+[connection signal="pressed" from="ScreenMargCont/MenuGroupsContainer/MenuButtons/ModifySetButton" to="." method="_on_ModifySetButton_pressed"]
+[connection signal="pressed" from="ScreenMargCont/MenuGroupsContainer/MenuButtons/ViewTimesButton" to="." method="_on_ViewTimesButton_pressed"]
+[connection signal="pressed" from="ScreenMargCont/MenuGroupsContainer/MenuButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="ScreenMargCont/MenuGroupsContainer/MenuButtons/AboutButton" to="." method="_on_AboutButton_pressed"]
+[connection signal="pressed" from="ScreenMargCont/MenuGroupsContainer/MenuButtons/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="mouse_entered" from="TextureProgress" to="TextureProgress" method="_on_TextureProgress_mouse_entered"]
+[connection signal="mouse_exited" from="TextureProgress" to="TextureProgress" method="_on_TextureProgress_mouse_exited"]
+[connection signal="timeout" from="TextureProgress/ResetTimer" to="TextureProgress" method="_on_ResetTimer_timeout"]

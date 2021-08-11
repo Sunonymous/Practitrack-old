@@ -1,0 +1,64 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "RichTextEffect",
+"class": "RichTextGhost",
+"language": "GDScript",
+"path": "res://Scripts/TextEffects/ghost_txt_effect.gd"
+}, {
+"base": "RichTextEffect",
+"class": "RichTextMatrix",
+"language": "GDScript",
+"path": "res://Scripts/TextEffects/matrix_txt_effect.gd"
+}, {
+"base": "RichTextEffect",
+"class": "RichTextPulse",
+"language": "GDScript",
+"path": "res://Scripts/TextEffects/pulse_txt_effect.gd"
+} ]
+_global_script_class_icons={
+"RichTextGhost": "",
+"RichTextMatrix": "",
+"RichTextPulse": ""
+}
+
+[application]
+
+config/name="Practitrack"
+run/main_scene="res://Scenes/MainMenu.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+Settings="*res://Scripts/Settings.gd"
+
+[display]
+
+window/size/width=480
+window/size/height=720
+window/size/resizable=false
+window/size/fullscreen=true
+window/handheld/orientation="portrait"
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "regular_polygon2d_node" )
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_clear_color=Color( 1, 1, 1, 1 )
+environment/default_environment="res://default_env.tres"

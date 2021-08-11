@@ -1,0 +1,214 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Font/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/SettingsScene.gd" type="Script" id=2]
+[ext_resource path="res://Font/Roboto-Medium.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+TooltipLabel/colors/font_color = Color( 0, 0, 0, 1 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
+TooltipLabel/constants/shadow_offset_x = 1
+TooltipLabel/constants/shadow_offset_y = 1
+TooltipLabel/fonts/font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 42
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 13
+font_data = ExtResource( 3 )
+
+[node name="SettingsScene" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ScreenMarg" type="MarginContainer" parent="."]
+margin_right = 480.0
+margin_bottom = 720.0
+theme = SubResource( 3 )
+custom_constants/margin_right = 40
+custom_constants/margin_top = 110
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 110
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DataLocFileDialog" type="FileDialog" parent="ScreenMarg"]
+margin_left = 40.0
+margin_top = 110.0
+margin_right = 440.0
+margin_bottom = 610.0
+theme = SubResource( 5 )
+popup_exclusive = true
+window_title = "Open a File"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.set ; SET Data Files" )
+show_hidden_files = true
+current_dir = "/home/sunny/Dropbox/#PROJ/Practitrack v0.2"
+current_path = "/home/sunny/Dropbox/#PROJ/Practitrack v0.2/"
+
+[node name="Panel" type="Panel" parent="ScreenMarg"]
+margin_left = 40.0
+margin_top = 110.0
+margin_right = 440.0
+margin_bottom = 610.0
+
+[node name="ContentMarg" type="MarginContainer" parent="ScreenMarg/Panel"]
+margin_right = 400.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContentVBox" type="VBoxContainer" parent="ScreenMarg/Panel/ContentMarg"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 380.0
+margin_bottom = 490.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsTitle" type="RichTextLabel" parent="ScreenMarg/Panel/ContentMarg/ContentVBox"]
+margin_right = 360.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]Settings[/center]"
+text = "Settings"
+
+[node name="SettingsScrollCont" type="ScrollContainer" parent="ScreenMarg/Panel/ContentMarg/ContentVBox"]
+margin_top = 82.0
+margin_right = 360.0
+margin_bottom = 397.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="SettingsContainer" type="VBoxContainer" parent="ScreenMarg/Panel/ContentMarg/ContentVBox/SettingsScrollCont"]
+margin_right = 360.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="DataLocHBox" type="HBoxContainer" parent="ScreenMarg/Panel/ContentMarg/ContentVBox/SettingsScrollCont/SettingsContainer"]
+margin_right = 360.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DataLocLabel" type="RichTextLabel" parent="ScreenMarg/Panel/ContentMarg/ContentVBox/SettingsScrollCont/SettingsContainer/DataLocHBox"]
+margin_right = 282.0
+margin_bottom = 30.0
+hint_tooltip = "Update the location of your saved \"data.set\" file."
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Set File Location"
+text = "Set File Location"
+
+[node name="DataLocButton" type="Button" parent="ScreenMarg/Panel/ContentMarg/ContentVBox/SettingsScrollCont/SettingsContainer/DataLocHBox"]
+margin_left = 286.0
+margin_right = 360.0
+margin_bottom = 30.0
+text = "Change"
+
+[node name="CheckButton" type="CheckButton" parent="ScreenMarg/Panel/ContentMarg/ContentVBox/SettingsScrollCont/SettingsContainer"]
+visible = false
+margin_top = 34.0
+margin_right = 360.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 7 )
+text = "Setting with super long name"
+
+[node name="OpenFolderButton" type="Button" parent="ScreenMarg/Panel/ContentMarg/ContentVBox/SettingsScrollCont/SettingsContainer"]
+margin_top = 34.0
+margin_right = 360.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+text = "Open Data Folder"
+
+[node name="DeleteDataButton" type="Button" parent="ScreenMarg/Panel/ContentMarg/ContentVBox/SettingsScrollCont/SettingsContainer"]
+margin_top = 66.0
+margin_right = 360.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+text = "Delete User Data"
+
+[node name="ButtonsMarg" type="MarginContainer" parent="ScreenMarg/Panel/ContentMarg/ContentVBox"]
+margin_top = 401.0
+margin_right = 360.0
+margin_bottom = 480.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+custom_constants/margin_right = 15
+custom_constants/margin_top = 25
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 25
+
+[node name="ButtonsHBox" type="HBoxContainer" parent="ScreenMarg/Panel/ContentMarg/ContentVBox/ButtonsMarg"]
+margin_left = 15.0
+margin_top = 25.0
+margin_right = 345.0
+margin_bottom = 54.0
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="ScreenMarg/Panel/ContentMarg/ContentVBox/ButtonsMarg/ButtonsHBox"]
+margin_left = 99.0
+margin_right = 151.0
+margin_bottom = 29.0
+text = "Save"
+
+[node name="VSeparator" type="VSeparator" parent="ScreenMarg/Panel/ContentMarg/ContentVBox/ButtonsMarg/ButtonsHBox"]
+margin_left = 155.0
+margin_right = 159.0
+margin_bottom = 29.0
+
+[node name="CancelButton" type="Button" parent="ScreenMarg/Panel/ContentMarg/ContentVBox/ButtonsMarg/ButtonsHBox"]
+margin_left = 163.0
+margin_right = 231.0
+margin_bottom = 29.0
+text = "Cancel"
+
+[connection signal="dir_selected" from="ScreenMarg/DataLocFileDialog" to="." method="_on_DataLocFileDialog_dir_selected"]
+[connection signal="file_selected" from="ScreenMarg/DataLocFileDialog" to="." method="_on_DataLocFileDialog_file_selected"]
+[connection signal="pressed" from="ScreenMarg/Panel/ContentMarg/ContentVBox/SettingsScrollCont/SettingsContainer/DataLocHBox/DataLocButton" to="." method="_on_DataLocButton_pressed"]
+[connection signal="pressed" from="ScreenMarg/Panel/ContentMarg/ContentVBox/SettingsScrollCont/SettingsContainer/OpenFolderButton" to="." method="_on_OpenFolderButton_pressed"]
+[connection signal="pressed" from="ScreenMarg/Panel/ContentMarg/ContentVBox/SettingsScrollCont/SettingsContainer/DeleteDataButton" to="." method="_on_DeleteDataButton_pressed"]
+[connection signal="pressed" from="ScreenMarg/Panel/ContentMarg/ContentVBox/ButtonsMarg/ButtonsHBox/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="ScreenMarg/Panel/ContentMarg/ContentVBox/ButtonsMarg/ButtonsHBox/CancelButton" to="." method="_on_CancelButton_pressed"]
